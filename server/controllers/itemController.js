@@ -8,7 +8,9 @@ const createItem = function(req,res){
     brand : req.body.brand,
     category : req.body.category,
     stock : req.body.stock,
-    price : req.body.price
+    price : req.body.price,
+    img : req.body.img,
+    desciption : req.body.desciption
   })
   newItem.save().then(function(){
     res.status(201).send('[+] 1 Item Created')
@@ -37,7 +39,9 @@ const updateItem = function(req,res){
     data_Items.brand = req.body.brand,
     data_Items.category = req.body.category,
     data_Items.stock = req.body.stock,
-    data_Items.price = req.body.price
+    data_Items.price = req.body.price,
+    data_Items.img = req.body.img,
+    data_Items.desciption = req.body.desciption
     // save
     data_Items.save().then(function(){
       res.status(201).send('[+] 1 Item Updated')

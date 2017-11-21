@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="belanja murah" content="belanja barang barang murah">
+  <meta name="belanja barang barang murah dan terpercaya" content="emoll - belanja barang barang murah">
+  <link rel="shortcut icon" href="#">
+  <title>layout ecommerce</title>
+  <!--css-->
+  <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/slick/slick.min.css">
+  <link rel="stylesheet" href="assets/css/my-style.css">
+  <link rel="stylesheet" href="assets/css/footer-dark.css">
+	<link rel="stylesheet" href="assets/font/icont-fonts.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  
+</head>
+
+<body>
+	<div id="app"><!-- start vue -->
+  <!-- start loader -->
+  <div class="loader-wrapper">
+    <div class="loader">
+      <svg class="circular" viewBox="25 25 50 50">
+        <circle class="loader-animation" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+      </svg>
+    </div>
+  </div>
+  <!-- end loader-->
+<!-- START HEADER -->
+  <nav class="panel-menu">
+			<ul>
+				<li><a href="#">HOME</a></li>
+				<li>
+					<a href="#">GALLERY</a>
+					<ul>
+						<li><a href="#">GALERY 1</a></li>
+						<li><a href="#">GALERY 2</a></li>
+					</ul>
+				</li>
+			</ul>
+			<div class="mm-navbtn-names" style="display:none">
+				<div class="mm-closebtn">CLOSE</div>
+				<div class="mm-backbtn">BACK</div>
+			</div>
+		</nav>
+		<header class="no-shadow">
+			<!-- ## mobile-header -->
+			<div class="mobile-header">
+				<div class="container-fluid">
+					<div class="pull-left">
+						<div class="mini-menu-dropdown dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown">
+							<span class="icon icon-more_horiz"></span>
+							</a>
+							<div class="dropdown-menu">
+								<div class="mini-menu">
+									<ul>
+										<li class="active"><a href="index.html">Home</a></li>
+										<li><a href="#">Delivery</a></li>
+										<li><a href="#">Contacts</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="pull-right">
+						<!-- account -->
+						<div class="account dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown"><span class="icon icon-person "></span></a>
+							<div class="dropdown-label">My Account</div>
+							<ul class="dropdown-menu">
+								<li><a href="#"><span class="icon icon-person"></span>My Account</a></li>
+								<li><a href="#" data-toggle="modal" data-target="#modalCheckOut"><span class="icon icon-check"></span>Checkout</a></li>
+								<li><a href="#" data-toggle="modal" data-target="#modalLoginForm"><span class="icon icon-lock_outline"></span>Log In</a></li>
+								<li><a href="#"><span class="icon icon-person_add"></span>Create an account</a></li>
+							</ul>
+						</div>
+						<!-- /account -->
+            <!-- cart -->
+            
+						<div class="main-parent-cart">
+								<div v-show="!verified" class="cart">
+									<div class="dropdown">
+										<a data-toggle="modal" data-target="#modalCheckCarts" class="dropdown-toggle">
+											<span class="icon icon-shopping_basket"></span>
+											<span class="badge badge-cart">{{ carts.length  }}</span>
+											<div class="dropdown-label hidden-sm hidden-xs">YOUR BAG</div>
+										</a>
+									</div>
+								</div>
+              </div>
+              
+						<!-- /cart -->
+					</div>
+				</div>
+				<div class="container-fluid text-center">
+					<!-- logo -->
+					<div class="logo">
+						<a href="index.html"><img src="#" alt=""/></a>
+					</div>
+					<!-- /logo -->
+				</div>
+				<div class="container-fluid top-line">
+					<div class="pull-left">
+						<div class="mobile-parent-menu">
+							<div class="mobile-menu-toggle">
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="menu-text">
+								MENU
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="pull-right">
+						<!-- search -->
+						<div class="search">
+							<a href="#" class="search-open"><span class="icon icon-search"></span></a>
+							<div class="search-dropdown">
+								<form action="#" method="get">
+									<div class="input-outer">
+										<input type="search" name="search" value="" maxlength="128" placeholder="Enter keyword">
+										<button type="submit" class="btn-search"><span>Search</span></button>
+									</div>
+									<a href="#" class="search-close"><span class="icon icon-close"></span></a>
+								</form>
+							</div>
+						</div>
+						<!-- /search -->
+					</div>
+				</div>
+			</div>
+      <!-- ##/mobile-header -->
+      
+			<!-- ##/desktop-header -->
+			<div class="desktop-header  header-09">
+				<div class="container">
+					<div class="pull-left">
+						<!-- logo -->
+						<div class="text-center">
+							<div class="logo">
+								<a href="index.html"><img src="#" alt=""/></a>
+							</div>
+						</div>
+						<!-- /logo -->
+					</div>
+					<div class="pull-right">
+						<!-- account -->
+						<div class="account dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown">
+							<span class="icon icon-person "></span>
+							<span class="dropdown-label">My Account</span>
+							</a>
+							<ul class="dropdown-menu">
+                <li><a href="#"><span class="icon icon-person"></span>My Account</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#modalCheckOut"><span class="icon icon-check"></span>Checkout</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#modalLoginForm"><span class="icon icon-lock_outline"></span>Log In</a></li>
+                <li><a href="#"><span class="icon icon-person_add"></span>Create an account</a></li>
+							</ul>
+						</div>
+						<!-- /account -->
+						<!-- cart -->
+						<div class="main-parent-cart">
+								<div v-show="!verified" class="cart" >
+										<div class="dropdown">
+											<a data-toggle="modal" data-target="#modalCheckCarts" class="dropdown-toggle">
+												<span class="icon icon-shopping_basket"></span>
+												<span class="badge badge-cart">{{ carts.length  }}</span>
+												<div class="dropdown-label hidden-sm hidden-xs">YOUR BAG</div>
+											</a>
+								</div>
+							</div>
+						</div>
+						<!-- /cart -->
+					</div>
+				</div>
+				<div class="container">
+					<div class="pull-left">
+						<div class="menu-parent-box">
+							<!-- header-menu -->
+							<nav class="header-menu">
+									<ul>
+										<li class="dropdown"><a href="#">HOME</a></li>
+										<li class="dropdown">
+											<a href="#">GALLERY</a>
+											<div class="dropdown-menu">
+												<h2 class="title-submenu">GALLERY</h2>
+												<ul class="image-links-layout">
+													<li>
+														<a href="#">
+														<span class="figure"><img src="#" alt=""></span>
+														<span class="figcaption">Grid Layout</span>
+														</a>
+													</li>
+												</ul>
+											</div>
+										</li>
+									</ul>
+								</nav>
+							<!-- /header-menu -->
+						</div>
+					</div>
+					<div class="pull-right">
+						<!-- search -->
+						<div class="search">
+							<a href="#" class="search-open"><span class="icon icon-search"></span></a>
+							<div class="search-dropdown">
+								<form action="#" method="get">
+									<div class="input-outer">
+										<input type="search" name="search" value="" maxlength="128" placeholder="Enter keyword">
+										<button type="submit" class="btn-search">SEARCH</button>
+									</div>
+									<a href="#" class="search-close"><span class="icon icon-close"></span></a>
+								</form>
+							</div>
+						</div>
+						<!-- /search -->
+					</div>
+				</div>
+			</div>
+			<!-- /desktop-header -->
+			<!-- stuck nav -->
+			<div class="stuck-nav">
+				<div class="container">
+					<div class="pull-left">
+						<div class="stuck-menu-parent-box"></div>
+					</div>
+					<div class="pull-right">
+						<div class="stuck-cart-parent-box"></div>
+					</div>
+				</div>
+			</div>
+			<!-- /stuck nav -->
+		</header>
+<!-- END HEADER-->
+
+<!-- START CONTENT-->
+<div id="pageContent">
+    <div class="container offset-56">
+      <div class="visible-xs visible-sm">
+        <div class="mobile-categories-toggle btn">
+          CATEGORIES
+        </div>
+      </div>
+      <div class="row">
+        <!-- col-center-right -->
+        <div class="col-sm-12 col-md-8 col-lg-9  col-md-push-4 col-lg-push-3 global-first-child">
+          <!-- start caraosell -->
+          <div class="content">
+            <div class="slick-slider-indent">
+              <div class="slick-slider slick-slider-content">
+                <div>
+                  <img src="assets/images/slides/slide-1-01.jpg" alt="">
+                  <div class="description point-right point-left">
+                    <div class="block-table">
+                      <div class="block-table-cell">
+                        <div style="color:white;" class="title">
+                          Get Ready<br>for Fashion<br>Creation
+                        </div>
+                        <p style="color:white;" class="color-defaulttext2">
+                          Unlike Anything You<br>Have Ever Seen
+                        </p>
+                        <a href="#" class="btn">SHOP NOW!</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <img src="assets/images/slides/slide-2-01.jpg" alt="">
+                    <div class="description point-left point-left">
+                      <div class="block-table">
+                        <div class="block-table-cell">
+                          <div style="color:white;" class="title">
+                            Get Ready<br>for Fashion<br>Creation
+                          </div>
+                          <p style="color:white;" class="color-defaulttext2">
+                            Unlike Anything You<br>Have Ever Seen
+                          </p>
+                        <a href="#" class="btn">SHOP NOW!</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end caraosell -->
+
+          <div class="content">
+            <h1 class="block-title small">COLLECTIONS</h1>
+          </div>
+          <div class="content">
+            <hr class="hr-offset-1">
+          </div>
+          <!-- start list item -->
+          <div class="content">
+							<div class="row">
+								<div v-for="item in items">
+                <!-- start card item -->
+                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
+                  <div class="product">
+                    <div class="product_inside">
+                      <div class="image-box">
+                        <a href="#">
+                        <img v-bind:src="item.img" v-bind:alt="item.item_name">
+                        </a>
+                        <a href="#" data-toggle="modal" data-target="#ModalquickView" class="quick-view">
+                        <span>
+                        <span class="icon icon-visibility"></span>QUICK VIEW
+                        </span>
+                        </a>
+                      </div>
+                      <h2 class="title">
+                        <a href="#">{{ item.item_name}}</a>
+                      </h2>
+                      <div class="price view">
+													{{ item.price}} IDR
+                      </div>
+                      <div class="description">
+                          {{ item.description}}
+                      </div>
+                      <div class="product_inside_hover">
+                        <div class="product_inside_info">
+                          
+                          <div class="rating">
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star"></span>
+                            <span class="icon-star empty-star"></span>
+                          </div>
+                          <a v-on:click.prevent="addToCart(item)" class="btn btn-product_addtocart" href="#" data-toggle="modal" data-target="#modalAddToCartProduct">
+                          <span class="icon icon-shopping_basket"></span>ADD TO CART
+                          </a>
+                          <a href="#"  class="quick-view btn" data-toggle="modal" data-target="#ModalquickView">
+                          <span>
+                          <span class="icon icon-visibility"></span>QUICK VIEW
+                          </span>
+                          </a>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+								<!-- end card item -->
+							 </div>
+              </div>
+          </div>
+          <!-- start list item -->
+        </div>
+
+        <!-- start col-left -->
+        <div class="col-sm-12 col-md-4 col-lg-3  col-md-pull-8 col-lg-pull-9 global-first-child">
+          <!-- start categori left col-->
+          <div class="box-aside">
+            <div class="menu-vertical hidden-xs hidden-sm">
+              <h3 class="title">CATEGORIES</h3>
+              <nav>
+                <ul>
+                  <li class="dropdown">
+                    <a href="index.html">LAYOUT</a>
+                    <div class="dropdown-menu">
+                      <h2 class="title-submenu">LAYOUT</h2>
+                      <ul class="image-links-layout border">
+                        <li>
+                          <a href="index.html">
+                          <span class="figure"><img src="#" alt=""></span>
+                          <span class="figcaption"></span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  
+                  <li class="dropdown multicolumn">
+                    <a href="#">SIMPLE MENU</a>
+                    <ul class="dropdown-menu one-col">
+                      <li><a href="#">level 0</a></li>
+                      </ul>
+                  </li>
+
+                  <li class="dropdown"><a href="#">BLOUSE</a></li>
+                  <li class="dropdown"><a href="#">JACKET</a></li>
+                  <li class="dropdown"><a href="#">JEANS</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <!-- end categori left col-->
+          <div class="box-aside">
+            <div class="text-center-sm">
+              <a href="index.html" class="promo-box-1">
+                <img src="assets/images/custom/promo-ads-01.jpg" alt="">
+                  <div class="description">
+                  <span class="btn">SHOP NOW!</span>
+                </div>
+              </a>
+            </div>
+          </div>
+          <!-- start coment box -->
+          <!-- end comment box
+          <!-- start newlatters -->
+          <div class="box-aside">
+              <div class="subscribe-box">
+                <div class="title">GET THE LATEST NEWS DELIVERED DAILY!</div>
+                <p>
+                  Give us your email and you will be daily updated with the latest events, in detail!
+                </p>
+                <form class="form-inline">
+                  <label class="sr-only" for="email">Email</label>
+                  <span class="addon-icon">
+                  <span class="icon icon-email"></span>
+                  </span>
+                  <input type="email" class="form-control addon-icon" id="email" placeholder="Enter your e-mail">
+                  <a href="#" class="btn">SUBSCRIBE</a>
+                </form>
+              </div>
+            </div>
+          <!-- end newslatters-->
+          <!-- <div class="box-aside visible-lg visible-md">
+            <hr>
+          </div>
+          <div class="box-aside">
+            <h3 class="title-aside">{{message}}ADS</h3>
+          </div>
+        </div> -->
+        <!-- end col-left -->
+      </div>
+      <!-- start row promo -->
+      <div class="content hidden-mobile offset-56">
+        <hr>
+      </div>
+      <div class="content offset-56">
+        <div class="row">
+          <div class="custom-layout carousel-products-mobile-md">
+            <div class="col-xs-6 col-md-4">
+              <a href="listing-left-column.html" class="promo-box zoom-in design-01">
+                <img src="assets/images/promo/ads-370x370px-01.jpg" alt="">
+                <div class="description">
+                  <div class="block-table">
+                    <div class="block-table-cell">
+                      <div style="color:white" class="title color-defaulttext2">Pixel Perfect<br>Design</div>
+                      <span class="btn btn-red">SHOP NOW!</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-xs-6 col-md-4">
+              <a href="listing-left-column.html" class="promo-box zoom-in  design-02">
+                <img src="assets/images/promo/ads-370x370px-02-01.jpg" alt="">
+                <div class="description small-indent">
+                  <div class="block-table">
+                    <div class="block-table-cell">
+                      <img class="img-responsive" src="#" alt="">
+                      <div class="title">Sweather</div>
+                      <p>is Passion your Fashion</p>
+                      <span class="btn btn-red">SHOP NOW!</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="col-xs-6 col-md-4">
+              <a href="listing-left-column.html" class="promo-box zoom-in design-03">
+                <img src="assets/images/promo/ads-370x370px-02-01-01.jpg" alt="">
+                <div class="description point-left">
+                  <div class="block-table">
+                    <div class="block-table-cell">
+                      <div class="title">It Does not<br>Matter - what<br>Kind of Passion<br></div>
+                      <span class="btn btn-red">SHOP NOW!</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end row promo -->
+    </div>
+  </div>
+<!-- END CONTENT-->
+
+<!-- START FOOTER -->
+  <footer>
+			<div class="footer-content-col">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-3 col-sm-12 hidden-xs">
+							<div class="row">
+								<div class="col-sm-4 col-md-12">
+									<div class="footer-logo">
+										<a href="index.html"><img src="#" alt=""></a>
+									</div>
+								</div>
+								<div class="col-sm-8 col-md-12">
+									<div class="social-icon-round">
+										<ul>
+											<li><a class="icon fa fa-facebook" href="http://www.facebook.com/"></a></li>
+											<li><a class="icon fa fa-twitter" href="http://www.twitter.com/"></a></li>
+											<li><a class="icon fa fa-google-plus" href="http://www.google.com/"></a></li>
+											<li><a class="icon fa fa-instagram" href="https://instagram.com/"></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-2">
+							<div class="mobile-collapse">
+								<h4 class="mobile-collapse_title">INFORMATION</h4>
+								<div class="mobile-collapse_content">
+									<div class="v-links-list">
+										<ul>
+											<li><a href="#">About Us</a></li>
+											<li><a href="#">Customer Service</a></li>
+											<li><a href="#">Privacy Policy</a></li>
+											<li><a href="#">Site Map</a></li>
+											<li><a href="#">Search Terms</a></li>
+											<li><a href="#">Orders and Returns</a></li>
+											<li><a href="#">Contact Us</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-2">
+							<div class="mobile-collapse">
+								<h4 class="mobile-collapse_title">WHY BUY FROM US</h4>
+								<div class="mobile-collapse_content">
+									<div class="v-links-list ">
+										<ul>
+											<li><a href="#">Shipping & Returns</a></li>
+											<li><a href="#">Secure Shopping</a></li>
+											<li><a href="#">International Shipping</a></li>
+											<li><a href="#">Group Sales</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix divider visible-sm"></div>
+						<div class="col-sm-6 col-md-2">
+							<div class="mobile-collapse">
+								<h4 class="mobile-collapse_title">MY ACCOUNT</h4>
+								<div class="mobile-collapse_content">
+									<div class="v-links-list ">
+										<ul>
+											<li><a href="#">Sign In</a></li>
+											<li><a href="#">View Cart</a></li>
+											<li><a href="#">Track My Order</a></li>
+											<li><a href="#">Help</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-3">
+							<div class="mobile-collapse">
+								<h4 class="mobile-collapse_title">CONTACTS</h4>
+								<div class="mobile-collapse_content">
+									<div class="list-info">
+										<ul>
+											<li>Address: Ghandaria, Jakarta Selatan, Indonesia</li>
+											<li>Phone: +62 21 2345 7885</li>
+											<li>Fax: +62 21 2345 7886</li>
+											<li>E-mail: <a href="mailto:info@mail.com">info@mail.com</a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="copyright">
+				<div class="container visible-xs">
+						<div class="social-icon-round">
+							<ul>
+							<li><a class="icon fa fa-facebook" href="http://www.facebook.com/"></a></li>
+							<li><a class="icon fa fa-twitter" href="http://www.twitter.com/"></a></li>
+							<li><a class="icon fa fa-google-plus" href="http://www.google.com/"></a></li>
+							<li><a class="icon fa fa-instagram" href="https://instagram.com/"></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="container">
+					<div class="pull-right">
+						<!-- <div class="payment-list">
+							<ul>
+								<li><a class="icon-01" href="#"></a></li>
+								<li><a class="icon-02" href="#"></a></li>
+								<li><a class="icon-03" href="#"></a></li>
+								<li><a class="icon-04" href="#"></a></li>
+								<li><a class="icon-05" href="#"></a></li>
+								<li><a class="icon-06" href="#"></a></li>
+								<li><a class="icon-07" href="#"></a></li>
+								<li><a class="icon-08" href="#"></a></li>
+							</ul>
+						</div> -->
+					</div>
+					<div class="pull-left">
+						<div class="box-copyright">
+							<a href="index.html">emoll</a> &copy; 2017. <span>All Rights Reserved.</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a href="#" class="back-to-top">
+			<span class="icon icon-keyboard_arrow_up"></span>
+			<span class="text">BACK TO TOP</span>
+			</a>
+		</footer>
+<!-- END FOOTER -->
+</div> 
+<!-- end vue -->
+
+<!-- START MODAL -->
+  <!-- Start Modal checkout -->
+  <div class="modal fade"  id="modalCheckOut" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md-small">
+      <div class="modal-content ">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="icon icon-clear"></span></button>
+          
+            <div class="checkout-box">
+                <h4 class="modal-title text-center text-uppercase">2 ITEM IN CART</h4>
+                <div class="checkout-box-03">
+                  <div class="item">
+                    <div class="img">
+                      <a href="#"><img src="#" alt=""></a>
+                    </div>
+                    <div class="description">
+                      <a href="#" class="title">Daisy Street 3/4 Sleeve Pane</a>
+                      <p>Black,  Xl</p>
+                      <div class="price">450.000 IDR</div>
+                      <p> QTY : 1</p>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="img">
+                      <a href="#"><img src="#" alt=""></a>
+                    </div>
+                    <div class="description">
+                        <a href="#" class="title">Daisy Street 3/4 Sleeve Pane</a>
+                        <p>Black,  Xl</p>
+                        <div class="price">450.000 IDR</div>
+                        <p> QTY : 1</p>
+                      </div>
+                  </div>
+                </div>
+            </div>
+            <div style="padding-top:8px; padding-bottom:8px;">
+              <hr class="hr-offset-1">
+            </div>
+            <h4 style="margin-bottom: 8%;" class="modal-title text-center text-uppercase">Order Total :  <strong class="color-base">12.000.000 IDR</strong></h4>
+              
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Modal checkout -->
+  <!-- Start Modal checkCarts -->
+  <div class="modal fade"  id="modalCheckCarts" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-md-small">
+        <div class="modal-content ">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="icon icon-clear"></span></button>
+                <h4 class="modal-title text-center text-uppercase">RECENTLY ADDED ITEM(S)</h4>
+                <!-- <a href="#" class="icon icon-close cart-close"></a> -->
+                <ul>
+                  <li class="item">
+                    <div class="img">
+                      <a href="#"><img src="images/product/product-01.jpg" alt=""/></a>
+                    </div>
+                    <div class="info">
+                      <div class="title-col">
+                        <h4 class="title">
+                          <a href="#">Daisy Street 3/4 Sleeve Panelled Casual Shirt</a>
+                        </h4>
+                        <div class="details">
+                          Black, XL
+                        </div>
+                      </div>
+                      <div class="price">
+                        120.000 IDR
+                      </div>
+                      <div class="qty">
+                        <div class="qty-label">Qty:</div>
+                        <div class="style-2 input-counter">
+                          <span class="minus-btn"></span>
+                          <input type="text" value="1" size="5"/>
+                          <span class="plus-btn"></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="item-control">
+                      <div class="delete"><a href="#" class="icon icon-delete" title="Delete"></a></div>
+                      <div class="edit"><a href="#" class="icon icon-edit" title="Edit"></a></div>
+                    </div>
+                  </li>
+                  
+                </ul>
+                <h4 class="empty-cart-js hide">Your Cart is Empty</h4>
+                <div class="cart-bottom">
+                  <div class="pull-right">
+                    <div class="pull-left">
+                      <div class="cart-total">TOTAL:  <span> 120.000.000 IDR</span></div>
+                    </div>
+                    <a href="#" class="btn icon-btn-left"><span class="icon icon-check_circle"></span>CHECKOUT</a>
+                  </div>
+                  <div class="pull-left">
+                    <a href="#" class="btn icon-btn-left"><span class="icon icon-shopping_basket"></span>VIEW CART</a>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!-- End Modal modalCheckCarts-->
+  <!-- modalLoginForm-->
+  <div class="modal fade"  id="modalLoginForm" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-md-small">
+				<div class="modal-content ">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="icon icon-clear"></span></button>
+						<h4 class="modal-title text-center text-uppercase">Login form</h4>
+					</div>
+					<form>
+						<div class="modal-body">
+							<!--modal-add-login-->
+							<div class="modal-login">
+								<div class="form-group">
+									<div class="input-group">
+										<span class="input-group-addon">
+										<span class="icon icon-person_outline"></span>
+										</span>
+										<input type="text" id="LoginFormName" class="form-control" placeholder="Name:">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group">
+										<span class="input-group-addon">
+										<span class="icon icon-lock_outline"></span>
+										</span>
+										<input type="password" id="LoginFormPass" class="form-control" placeholder="Password:">
+									</div>
+								</div>
+								<div class="checkbox-group">
+									<input type="checkbox" id="checkBox2">
+									<label for="checkBox2">
+									<span class="check"></span>
+									<span class="box"></span>
+									Remember me
+									</label>
+								</div>
+								<button type="button" class="btn btn-full">SIGN IN</button>
+								<button type="button" class="btn btn-full">CREATE AN ACCOUNT</button>
+								<div class="text-center"></div>
+								<div class="social-icon-fill">
+									<div>Or sign in with social</div>
+									<ul>
+										<li><a class="icon bg-facebook fa fa-facebook" href="http://www.facebook.com/"></a></li>
+										<li><a class="bg-twitter fa fa-twitter" href="http://www.twitter.com/"></a></li>
+										<li><a class="bg-google-plus fa fa-google-plus" href="http://www.google.com/"></a></li>
+									</ul>
+								</div>
+								<ul class="link-functional">
+									<li><a href="#">Forgot your username?</a></li>
+									<li><a href="#">Forgot your password?</a></li>
+								</ul>
+							</div>
+							<!--/modal-add-login-->
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- /modalLoginForm-->
+		
+<!-- END MODAL -->
+  
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+  <script src="assets/js/jquery/jquery-2.1.4.min.js"></script>
+  <script src="assets/js/bootstrap/bootstrap.min.js"></script>
+  <script src="assets/js/isotope/isotope.pkgd.min.js"></script>
+  <script src="assets/js/slick/slick.min.js"></script>
+  <script src="assets/js/panelmenu/panelmenu.js"></script>
+  <script src="assets/js/quick-view.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script>
+		new Vue({
+			el   : '#app',
+			data : {
+				message : 'You loaded this page on ',
+				items : [],
+				carts : [],
+				verified: false
+			},
+			created (){
+				axios.get('http://localhost:3000/api/items')
+				.then((response)=>{
+					// console.log(...response.data)
+					this.items.push(...response.data)
+				})
+				.catch(function(err){
+					console.error(err)
+				})
+			},
+			methods : {
+				addToCart: function(add){
+					// console.log('>>', add.price)
+					add.amount += 1
+					this.carts.push([add.price, add.item_name])
+					console.log(this.carts)
+        }
+			}
+		})
+	</script>
+</body>
+
+</html>

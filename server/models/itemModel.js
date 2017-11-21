@@ -24,8 +24,14 @@ const itemSchema = new Schema({
     required : true
   },
   price : {
-    type : String,
+    type : Number,
     required : true
+  },
+  img : {
+    type : String
+  },
+  desciption : {
+    type : String
   }
 })
 
