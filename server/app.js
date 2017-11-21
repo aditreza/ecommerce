@@ -21,7 +21,11 @@ mongoose.connect('mongodb://localhost/ecommerceDb').then(function(){
 
 //routes
 const index = require('./routes/index')
+const items = require('./routes/items')
+const transactions = require('./routes/transaction')
 app.use('/', index)
+app.use('/api/items', items)
+app.use('/api/transactions', transactions)
 
 app.listen(PORT, function(err){
   if(!err){

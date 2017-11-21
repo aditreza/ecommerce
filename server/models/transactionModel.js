@@ -4,10 +4,10 @@ const Schema = mongoose.Schema
 const transactionSchema = new Schema({
   product : {
     type : Schema.ObjectId,
-    ref  : 'Book'
+    ref  : 'Item'
   },
   created_at : {
-    type : date,
+    type : Date,
     default : new Date
   },
   total : Number
