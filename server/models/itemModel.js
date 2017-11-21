@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const bookSchema = new Schema({
+const itemSchema = new Schema({
   isbn : String,
   title : String,
   author : String,
@@ -10,5 +10,5 @@ const bookSchema = new Schema({
   price : Number
 })
 
-const bookModels = mongoose.model('Book', bookSchema)
-module.exports = bookModels
+const itemModels = mongoose.model('Item', itemSchema)
+module.exports = itemModels

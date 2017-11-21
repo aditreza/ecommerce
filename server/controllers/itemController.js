@@ -1,5 +1,5 @@
 const ObjectId = require('mongodb').ObjectId
-const Books = require('../models/bookModel')
+const Items = require('../models/itemModel')
 
 module.exports = {
 
