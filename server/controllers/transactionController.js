@@ -3,8 +3,9 @@ const Transactions = require('../models/transactionModel')
 
 const createTransaction = function(req,res){
   let newTransaction = Transactions({
-    product : req.body.product,
-    total : req.body.total
+    product : req.body.productId,
+    total : req.body.total,
+    logHistory : req.body.logHistory
   })
   newTransaction.save().then(function(){
     res.status(201).send('[+] 1 Transaction Created')
@@ -14,7 +15,7 @@ const createTransaction = function(req,res){
 }
 
 const findAllTransaction = function(req,res){
-  Transactions.find().populate('Item').then(function(data_Transactions){
+  Transactions.find().populate('product').then(function(data_Transactions){
     res.status(200).send(data_Transactions)
   }).catch(function(err){
     console.error(err)

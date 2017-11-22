@@ -21,17 +21,18 @@
 
 <body>
 	<div id="app"><!-- start vue -->
-  <!-- start loader -->
-  <div class="loader-wrapper">
-    <div class="loader">
-      <svg class="circular" viewBox="25 25 50 50">
-        <circle class="loader-animation" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
-      </svg>
-    </div>
-  </div>
-  <!-- end loader-->
-<!-- START HEADER -->
-  <nav class="panel-menu">
+	<!-- start loader -->
+		<div class="loader-wrapper">
+			<div class="loader">
+				<svg class="circular" viewBox="25 25 50 50">
+					<circle class="loader-animation" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+				</svg>
+			</div>
+		</div>
+	<!-- end loader-->
+
+	<!-- START HEADER -->
+  	<nav class="panel-menu">
 			<ul>
 				<li><a href="#">HOME</a></li>
 				<li>
@@ -237,259 +238,261 @@
 			</div>
 			<!-- /stuck nav -->
 		</header>
-<!-- END HEADER-->
+	<!-- END HEADER-->	
 
-<!-- START CONTENT-->
-<div id="pageContent">
-    <div class="container offset-56">
-      <div class="visible-xs visible-sm">
-        <div class="mobile-categories-toggle btn">
-          CATEGORIES
-        </div>
-      </div>
-      <div class="row">
-        <!-- col-center-right -->
-        <div class="col-sm-12 col-md-8 col-lg-9  col-md-push-4 col-lg-push-3 global-first-child">
-          <!-- start caraosell -->
-          <div class="content">
-            <div class="slick-slider-indent">
-              <div class="slick-slider slick-slider-content">
-                <div>
-                  <img src="assets/images/slides/slide-1-01.jpg" alt="">
-                  <div class="description point-right point-left">
-                    <div class="block-table">
-                      <div class="block-table-cell">
-                        <div style="color:white;" class="title">
-                          Get Ready<br>for Fashion<br>Creation
-                        </div>
-                        <p style="color:white;" class="color-defaulttext2">
-                          Unlike Anything You<br>Have Ever Seen
-                        </p>
-                        <a href="#" class="btn">SHOP NOW!</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <img src="assets/images/slides/slide-2-01.jpg" alt="">
-                    <div class="description point-left point-left">
-                      <div class="block-table">
-                        <div class="block-table-cell">
-                          <div style="color:white;" class="title">
-                            Get Ready<br>for Fashion<br>Creation
-                          </div>
-                          <p style="color:white;" class="color-defaulttext2">
-                            Unlike Anything You<br>Have Ever Seen
-                          </p>
-                        <a href="#" class="btn">SHOP NOW!</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- end caraosell -->
+	<!-- START CONTENT-->
+		<div id="pageContent">
+			<div class="container offset-56">
+				<div class="visible-xs visible-sm">
+					<div class="mobile-categories-toggle btn">
+						CATEGORIES
+					</div>
+				</div>
+				<div class="row">
+					<!-- col-center-right -->
+					<div class="col-sm-12 col-md-8 col-lg-9  col-md-push-4 col-lg-push-3 global-first-child">
+						<!-- start caraosell -->
+						<div class="content">
+							<div class="slick-slider-indent">
+								<div class="slick-slider slick-slider-content">
+									<div>
+										<img src="assets/images/slides/slide-1-01.jpg" alt="">
+										<div class="description point-right point-left">
+											<div class="block-table">
+												<div class="block-table-cell">
+													<div style="color:white;" class="title">
+														Get Ready<br>for Fashion<br>Creation
+													</div>
+													<p style="color:white;" class="color-defaulttext2">
+														Unlike Anything You<br>Have Ever Seen
+													</p>
+													<a href="#" class="btn">SHOP NOW!</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div>
+										<img src="assets/images/slides/slide-2-01.jpg" alt="">
+											<div class="description point-left point-left">
+												<div class="block-table">
+													<div class="block-table-cell">
+														<div style="color:white;" class="title">
+															Get Ready<br>for Fashion<br>Creation
+														</div>
+														<p style="color:white;" class="color-defaulttext2">
+															Unlike Anything You<br>Have Ever Seen
+														</p>
+													<a href="#" class="btn">SHOP NOW!</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- end caraosell -->
 
-          <div class="content">
-            <h1 class="block-title small">COLLECTIONS</h1>
-          </div>
-          <div class="content">
-            <hr class="hr-offset-1">
-          </div>
-          <!-- start list item -->
-          <div class="content">
+						<div class="content">
+							<h1 class="block-title small">COLLECTIONS</h1>
+						</div>
+						<div class="content">
+							<hr class="hr-offset-1">
+						</div>
+						<!-- start list item -->
+						<div class="content">
+								<div class="row">
+									<div v-for="item in items">
+									<!-- start card item -->
+									<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
+										<div class="product">
+											<div class="product_inside">
+												<div class="image-box">
+													<a href="#">
+													<img v-bind:src="item.img" v-bind:alt="item.item_name">
+													</a>
+													<a href="#" data-toggle="modal" data-target="#ModalquickView" class="quick-view">
+													<span>
+													<span class="icon icon-visibility"></span>QUICK VIEW
+													</span>
+													</a>
+												</div>
+												<h2 class="title">
+													<a href="#">{{ item.item_name}}</a>
+												</h2>
+												<div class="price view">
+														{{ priceIDR(item.price) }} IDR
+												</div>
+												<div class="description">
+														{{ item.description}}
+												</div>
+												<div class="product_inside_hover">
+													<div class="product_inside_info">
+														
+														<div class="rating">
+															<span class="icon-star"></span>
+															<span class="icon-star"></span>
+															<span class="icon-star"></span>
+															<span class="icon-star"></span>
+															<span class="icon-star empty-star"></span>
+														</div>
+														<a v-on:click.prevent="addToCart(item)" class="btn btn-product_addtocart" href="#" data-toggle="modal" data-target="#modalAddToCartProduct">
+														<span class="icon icon-shopping_basket"></span>ADD TO CART
+														</a>
+														<a href="#"  class="quick-view btn" data-toggle="modal" data-target="#ModalquickView">
+														<span>
+														<span class="icon icon-visibility"></span>QUICK VIEW
+														</span>
+														</a>
+														
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- end card item -->
+								</div>
+								</div>
+						</div>
+						<!-- start list item -->
+					</div>
+
+					<!-- start col-left -->
+					<div class="col-sm-12 col-md-4 col-lg-3  col-md-pull-8 col-lg-pull-9 global-first-child">
+						<!-- start categori left col-->
+						<div class="box-aside">
+							<div class="menu-vertical hidden-xs hidden-sm">
+								<h3 class="title">CATEGORIES</h3>
+								<nav>
+									<ul>
+										<li class="dropdown">
+											<a href="index.html">LAYOUT</a>
+											<div class="dropdown-menu">
+												<h2 class="title-submenu">LAYOUT</h2>
+												<ul class="image-links-layout border">
+													<li>
+														<a href="index.html">
+														<span class="figure"><img src="#" alt=""></span>
+														<span class="figcaption"></span>
+														</a>
+													</li>
+												</ul>
+											</div>
+										</li>
+										
+										<li class="dropdown multicolumn">
+											<a href="#">SIMPLE MENU</a>
+											<ul class="dropdown-menu one-col">
+												<li><a href="#">level 0</a></li>
+												</ul>
+										</li>
+
+										<li class="dropdown"><a href="#">BLOUSE</a></li>
+										<li class="dropdown"><a href="#">JACKET</a></li>
+										<li class="dropdown"><a href="#">JEANS</a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+						<!-- end categori left col-->
+						<div class="box-aside">
+							<div class="text-center-sm">
+								<a href="index.html" class="promo-box-1">
+									<img src="assets/images/custom/promo-ads-01.jpg" alt="">
+										<div class="description">
+										<span class="btn">SHOP NOW!</span>
+									</div>
+								</a>
+							</div>
+						</div>
+						<!-- start coment box -->
+						<!-- end comment box
+						<!-- start newlatters -->
+						<div class="box-aside">
+								<div class="subscribe-box">
+									<div class="title">GET THE LATEST NEWS DELIVERED DAILY!</div>
+									<p>
+										Give us your email and you will be daily updated with the latest events, in detail!
+									</p>
+									<form class="form-inline">
+										<label class="sr-only" for="email">Email</label>
+										<span class="addon-icon">
+										<span class="icon icon-email"></span>
+										</span>
+										<input type="email" class="form-control addon-icon" id="email" placeholder="Enter your e-mail">
+										<a href="#" class="btn">SUBSCRIBE</a>
+									</form>
+								</div>
+							</div>
+							<!-- end newslatters-->
+							<!-- <div class="box-aside visible-lg visible-md">
+								<hr>
+							</div>
+							<div class="box-aside">
+								<h3 class="title-aside">{{message}}ADS</h3>
+							</div>
+						</div> -->
+						<!-- end col-left -->
+					</div>
+
+					<!-- start row promo -->
+					<div class="content hidden-mobile offset-56">
+						<hr>
+					</div>
+					<div class="content offset-56">
 							<div class="row">
-								<div v-for="item in items">
-                <!-- start card item -->
-                <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
-                  <div class="product">
-                    <div class="product_inside">
-                      <div class="image-box">
-                        <a href="#">
-                        <img v-bind:src="item.img" v-bind:alt="item.item_name">
-                        </a>
-                        <a href="#" data-toggle="modal" data-target="#ModalquickView" class="quick-view">
-                        <span>
-                        <span class="icon icon-visibility"></span>QUICK VIEW
-                        </span>
-                        </a>
-                      </div>
-                      <h2 class="title">
-                        <a href="#">{{ item.item_name}}</a>
-                      </h2>
-                      <div class="price view">
-													{{ item.price}} IDR
-                      </div>
-                      <div class="description">
-                          {{ item.description}}
-                      </div>
-                      <div class="product_inside_hover">
-                        <div class="product_inside_info">
-                          
-                          <div class="rating">
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                            <span class="icon-star"></span>
-                            <span class="icon-star empty-star"></span>
-                          </div>
-                          <a v-on:click.prevent="addToCart(item)" class="btn btn-product_addtocart" href="#" data-toggle="modal" data-target="#modalAddToCartProduct">
-                          <span class="icon icon-shopping_basket"></span>ADD TO CART
-                          </a>
-                          <a href="#"  class="quick-view btn" data-toggle="modal" data-target="#ModalquickView">
-                          <span>
-                          <span class="icon icon-visibility"></span>QUICK VIEW
-                          </span>
-                          </a>
-                          
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-								<!-- end card item -->
-							 </div>
-              </div>
-          </div>
-          <!-- start list item -->
-        </div>
+								<div class="custom-layout carousel-products-mobile-md">
+								<div class="col-xs-6 col-md-4">
+									<a href="listing-left-column.html" class="promo-box zoom-in design-01">
+										<img src="assets/images/promo/ads-370x370px-01.jpg" alt="">
+										<div class="description">
+											<div class="block-table">
+												<div class="block-table-cell">
+													<div style="color:white" class="title color-defaulttext2">Pixel Perfect<br>Design</div>
+													<span class="btn btn-red">SHOP NOW!</span>
+												</div>
+											</div>
+										</div>
+									</a>
+								</div>
+								<div class="col-xs-6 col-md-4">
+									<a href="listing-left-column.html" class="promo-box zoom-in  design-02">
+										<img src="assets/images/promo/ads-370x370px-02-01.jpg" alt="">
+										<div class="description small-indent">
+											<div class="block-table">
+												<div class="block-table-cell">
+													<img class="img-responsive" src="#" alt="">
+													<div class="title">Sweather</div>
+													<p>is Passion your Fashion</p>
+													<span class="btn btn-red">SHOP NOW!</span>
+												</div>
+											</div>
+										</div>
+									</a>
+								</div>
+								<div class="col-xs-6 col-md-4">
+									<a href="listing-left-column.html" class="promo-box zoom-in design-03">
+										<img src="assets/images/promo/ads-370x370px-02-01-01.jpg" alt="">
+										<div class="description point-left">
+											<div class="block-table">
+												<div class="block-table-cell">
+													<div class="title">It Does not<br>Matter - what<br>Kind of Passion<br></div>
+													<span class="btn btn-red">SHOP NOW!</span>
+												</div>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- end row promo -->			
+				</div>
+			</div>
+		</div>
+	<!-- END CONTENT-->
 
-        <!-- start col-left -->
-        <div class="col-sm-12 col-md-4 col-lg-3  col-md-pull-8 col-lg-pull-9 global-first-child">
-          <!-- start categori left col-->
-          <div class="box-aside">
-            <div class="menu-vertical hidden-xs hidden-sm">
-              <h3 class="title">CATEGORIES</h3>
-              <nav>
-                <ul>
-                  <li class="dropdown">
-                    <a href="index.html">LAYOUT</a>
-                    <div class="dropdown-menu">
-                      <h2 class="title-submenu">LAYOUT</h2>
-                      <ul class="image-links-layout border">
-                        <li>
-                          <a href="index.html">
-                          <span class="figure"><img src="#" alt=""></span>
-                          <span class="figcaption"></span>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  
-                  <li class="dropdown multicolumn">
-                    <a href="#">SIMPLE MENU</a>
-                    <ul class="dropdown-menu one-col">
-                      <li><a href="#">level 0</a></li>
-                      </ul>
-                  </li>
-
-                  <li class="dropdown"><a href="#">BLOUSE</a></li>
-                  <li class="dropdown"><a href="#">JACKET</a></li>
-                  <li class="dropdown"><a href="#">JEANS</a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-          <!-- end categori left col-->
-          <div class="box-aside">
-            <div class="text-center-sm">
-              <a href="index.html" class="promo-box-1">
-                <img src="assets/images/custom/promo-ads-01.jpg" alt="">
-                  <div class="description">
-                  <span class="btn">SHOP NOW!</span>
-                </div>
-              </a>
-            </div>
-          </div>
-          <!-- start coment box -->
-          <!-- end comment box
-          <!-- start newlatters -->
-          <div class="box-aside">
-              <div class="subscribe-box">
-                <div class="title">GET THE LATEST NEWS DELIVERED DAILY!</div>
-                <p>
-                  Give us your email and you will be daily updated with the latest events, in detail!
-                </p>
-                <form class="form-inline">
-                  <label class="sr-only" for="email">Email</label>
-                  <span class="addon-icon">
-                  <span class="icon icon-email"></span>
-                  </span>
-                  <input type="email" class="form-control addon-icon" id="email" placeholder="Enter your e-mail">
-                  <a href="#" class="btn">SUBSCRIBE</a>
-                </form>
-              </div>
-            </div>
-          <!-- end newslatters-->
-          <!-- <div class="box-aside visible-lg visible-md">
-            <hr>
-          </div>
-          <div class="box-aside">
-            <h3 class="title-aside">{{message}}ADS</h3>
-          </div>
-        </div> -->
-        <!-- end col-left -->
-      </div>
-      <!-- start row promo -->
-      <div class="content hidden-mobile offset-56">
-        <hr>
-      </div>
-      <div class="content offset-56">
-        <div class="row">
-          <div class="custom-layout carousel-products-mobile-md">
-            <div class="col-xs-6 col-md-4">
-              <a href="listing-left-column.html" class="promo-box zoom-in design-01">
-                <img src="assets/images/promo/ads-370x370px-01.jpg" alt="">
-                <div class="description">
-                  <div class="block-table">
-                    <div class="block-table-cell">
-                      <div style="color:white" class="title color-defaulttext2">Pixel Perfect<br>Design</div>
-                      <span class="btn btn-red">SHOP NOW!</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="col-xs-6 col-md-4">
-              <a href="listing-left-column.html" class="promo-box zoom-in  design-02">
-                <img src="assets/images/promo/ads-370x370px-02-01.jpg" alt="">
-                <div class="description small-indent">
-                  <div class="block-table">
-                    <div class="block-table-cell">
-                      <img class="img-responsive" src="#" alt="">
-                      <div class="title">Sweather</div>
-                      <p>is Passion your Fashion</p>
-                      <span class="btn btn-red">SHOP NOW!</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="col-xs-6 col-md-4">
-              <a href="listing-left-column.html" class="promo-box zoom-in design-03">
-                <img src="assets/images/promo/ads-370x370px-02-01-01.jpg" alt="">
-                <div class="description point-left">
-                  <div class="block-table">
-                    <div class="block-table-cell">
-                      <div class="title">It Does not<br>Matter - what<br>Kind of Passion<br></div>
-                      <span class="btn btn-red">SHOP NOW!</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- end row promo -->
-    </div>
-  </div>
-<!-- END CONTENT-->
-
-<!-- START FOOTER -->
-  <footer>
+	<!-- START FOOTER -->
+		<footer>
 			<div class="footer-content-col">
 				<div class="container">
 					<div class="row">
@@ -591,19 +594,8 @@
 					</div>
 				</div>
 				<div class="container">
-					<div class="pull-right">
-						<!-- <div class="payment-list">
-							<ul>
-								<li><a class="icon-01" href="#"></a></li>
-								<li><a class="icon-02" href="#"></a></li>
-								<li><a class="icon-03" href="#"></a></li>
-								<li><a class="icon-04" href="#"></a></li>
-								<li><a class="icon-05" href="#"></a></li>
-								<li><a class="icon-06" href="#"></a></li>
-								<li><a class="icon-07" href="#"></a></li>
-								<li><a class="icon-08" href="#"></a></li>
-							</ul>
-						</div> -->
+					<div class="pull-right box-copyright">
+						<a>Experimental : Rest API | Express, Vue.Js, Axios | content: </a> <a href="https://www.zara.com/id/">ZARA Ind</a>
 					</div>
 					<div class="pull-left">
 						<div class="box-copyright">
@@ -617,114 +609,96 @@
 			<span class="text">BACK TO TOP</span>
 			</a>
 		</footer>
-<!-- END FOOTER -->
-</div> <!-- end vue -->
+	<!-- END FOOTER -->
 
 <!-- START MODAL -->
   <!-- Start Modal checkout -->
-  <div class="modal fade"  id="modalCheckOut" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md-small">
-      <div class="modal-content ">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="icon icon-clear"></span></button>
-          
-            <div class="checkout-box">
-                <h4 class="modal-title text-center text-uppercase">2 ITEM IN CART</h4>
-                <div class="checkout-box-03">
-                  <div class="item">
-                    <div class="img">
-                      <a href="#"><img src="#" alt=""></a>
-                    </div>
-                    <div class="description">
-                      <a href="#" class="title">Daisy Street 3/4 Sleeve Pane</a>
-                      <p>Black,  Xl</p>
-                      <div class="price">450.000 IDR</div>
-                      <p> QTY : 1</p>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="img">
-                      <a href="#"><img src="#" alt=""></a>
-                    </div>
-                    <div class="description">
-                        <a href="#" class="title">Daisy Street 3/4 Sleeve Pane</a>
-                        <p>Black,  Xl</p>
-                        <div class="price">450.000 IDR</div>
-                        <p> QTY : 1</p>
-                      </div>
-                  </div>
-                </div>
-            </div>
-            <div style="padding-top:8px; padding-bottom:8px;">
-              <hr class="hr-offset-1">
-            </div>
-            <h4 style="margin-bottom: 8%;" class="modal-title text-center text-uppercase">Order Total :  <strong class="color-base">12.000.000 IDR</strong></h4>
-              
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End Modal checkout -->
-  <!-- Start Modal checkCarts -->
-  <div class="modal fade"  id="modalCheckCarts" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-md-small">
-        <div class="modal-content ">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="icon icon-clear"></span></button>
-                <h4 class="modal-title text-center text-uppercase">RECENTLY ADDED ITEM(S)</h4>
-                <!-- <a href="#" class="icon icon-close cart-close"></a> -->
-                <ul>
-                  <li class="item">
-                    <div class="img">
-                      <a href="#"><img src="images/product/product-01.jpg" alt=""/></a>
-                    </div>
-                    <div class="info">
-                      <div class="title-col">
-                        <h4 class="title">
-                          <a href="#">Daisy Street 3/4 Sleeve Panelled Casual Shirt</a>
-                        </h4>
-                        <div class="details">
-                          Black, XL
-                        </div>
-                      </div>
-                      <div class="price">
-                        120.000 IDR
-                      </div>
-                      <div class="qty">
-                        <div class="qty-label">Qty:</div>
-                        <div class="style-2 input-counter">
-                          <span class="minus-btn"></span>
-                          <input type="text" value="1" size="5"/>
-                          <span class="plus-btn"></span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="item-control">
-                      <div class="delete"><a href="#" class="icon icon-delete" title="Delete"></a></div>
-                      <div class="edit"><a href="#" class="icon icon-edit" title="Edit"></a></div>
-                    </div>
-                  </li>
-                  
-                </ul>
-                <h4 class="empty-cart-js hide">Your Cart is Empty</h4>
-                <div class="cart-bottom">
-                  <div class="pull-right">
-                    <div class="pull-left">
-                      <div class="cart-total">TOTAL:  <span> 120.000.000 IDR</span></div>
-                    </div>
-                    <a href="#" class="btn icon-btn-left"><span class="icon icon-check_circle"></span>CHECKOUT</a>
-                  </div>
-                  <div class="pull-left">
-                    <a href="#" class="btn icon-btn-left"><span class="icon icon-shopping_basket"></span>VIEW CART</a>
-                  </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
-  <!-- End Modal modalCheckCarts-->
-  <!-- modalLoginForm-->
-  <div class="modal fade"  id="modalLoginForm" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
+  	<div class="modal fade"  id="modalCheckOut" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-md-small">
+				<div class="modal-content ">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="icon icon-clear"></span></button>
+							<div class="checkout-box">
+									<h4 class="modal-title text-center text-uppercase">THANKS, YOU BUY {{trans.length}} ITEM</h4>
+									<div v-for="(tran, i) in trans" class="checkout-box-03">
+										<div class="item">
+											<div class="img">
+												<a href="#"><img v-bind:src="tran.img" alt=""></a>
+											</div>
+											<div class="description">
+												<a style="font-weight:bold; font-size:15px;" href="#" class="title">{{tran.item_name}}</a>
+												<div class="price">{{tran.price}} IDR</div>
+												<p> QTY : {{tran.qty}}  |  <strong>total : {{tran.price * tran.qty}} IDR</strong></p>
+											</div>
+										</div>
+									</div>
+							</div>
+						<div style="padding-top:8px; padding-bottom:8px;">
+							<hr class="hr-offset-1">
+						</div>
+						<div>
+							<h4 style="margin-bottom: 8%;" class="modal-title text-center text-uppercase">Order Total :  <strong class="color-base">{{priceIDR(total_price)}} IDR <br><a href="invoice.html" style="font-size:10px;">print invoice</a></strong></h4>
+							
+						</div>	
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Modal checkout -->
+		<!-- Start Modal checkCarts -->
+		<div class="modal fade"  id="modalCheckCarts" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-md-small">
+				<div class="modal-content ">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="icon icon-clear"></span></button>
+						<h4 class="modal-title text-center text-uppercase">RECENTLY ADDED ITEM(S)</h4>
+						<!-- <a href="#" class="icon icon-close cart-close"></a> -->
+						<div class="mobile-parent-cart" >
+							<div v-for="(tran, i) in trans" >
+								<ul>
+									<li class="item">
+										<div class="img" style="position: absolute;">
+											<a href="#"><img v-bind:src="tran.img" v-bind:alt="tran.item_name" style="width: 60px;"/></a>
+										</div>
+										<div class="info" style="margin-left: 23%;">
+											<div class="title-col">
+												<h5 class="title">
+													<a href="#">{{ tran.item_name }} </a>
+												</h5>
+												<div class="price">
+														<h6>{{tran.price}} IDR</h6>
+												</div>
+											</div>
+											<div class="qty">
+												<div class="qty-label">Qty:</div>
+												<div class="style-2 input-counter">
+													<span class="minus-btn"></span>
+													<input type="text" v-bind:value="tran.qty" size="2"/>
+													<span class="plus-btn"></span>
+												</div>
+											</div>
+											<div class="item-control">
+													<div class="delete"><a href="#" class="icon icon-delete" title="Delete"></a></div>
+											</div>
+										</div>
+									</li>	
+								</ul>
+							</div>
+							<hr>
+							<div style="margin-top: 13%;" class="modal-title text-center text-uppercase">
+								<div class="cart-total"><span style="font-size: 14px; font-weight: 900; color: rgb(0, 0, 0);"> TOTAL :</span><span style="font-size: 24px; font-weight: 500; color: rgb(95, 209, 121);"> {{ priceIDR(total_price) }} IDR</span></div>
+							</div>
+							<div class="modal-title text-center text-uppercase">
+								<a style="width:100%" v-on:click="toTransaction" data-dismiss="modal" data-toggle="modal" data-target="#modalCheckOut" href="#" class="btn icon-btn-left"><span class="icon icon-check_circle"></span>CHECKOUT</a>
+							</div>
+						</div>	
+					</div>	
+				</div>		
+			</div>
+		</div>
+		<!-- End Modal modalCheckCarts-->
+		<!-- modalLoginForm-->
+		<div class="modal fade"  id="modalLoginForm" tabindex="-1" role="dialog" aria-label="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-md-small">
 				<div class="modal-content ">
 					<div class="modal-header">
@@ -738,53 +712,52 @@
 								<div class="form-group">
 									<div class="input-group">
 										<span class="input-group-addon">
-										<span class="icon icon-person_outline"></span>
+											<span class="icon icon-person_outline"></span>
 										</span>
 										<input type="text" id="LoginFormName" class="form-control" placeholder="Name:">
 									</div>
 								</div>
-								<div class="form-group">
-									<div class="input-group">
-										<span class="input-group-addon">
-										<span class="icon icon-lock_outline"></span>
-										</span>
-										<input type="password" id="LoginFormPass" class="form-control" placeholder="Password:">
+									<div class="form-group">
+										<div class="input-group">
+											<span class="input-group-addon">
+											<span class="icon icon-lock_outline"></span>
+											</span>
+											<input type="password" id="LoginFormPass" class="form-control" placeholder="Password:">
+										</div>
+									</div>	
+									<div class="checkbox-group">
+										<input type="checkbox" id="checkBox2">
+										<label for="checkBox2">
+											<span class="check"></span>
+											<span class="box"></span>
+												Remember me
+										</label>
+									</div>	
+									<button type="button" class="btn btn-full">SIGN IN</button>
+									<button type="button" class="btn btn-full">CREATE AN ACCOUNT</button>
+									<div class="text-center"></div>
+									<div class="social-icon-fill">
+										<div>Or sign in with social</div>
+										<ul>
+											<li><a class="icon bg-facebook fa fa-facebook" href="http://www.facebook.com/"></a></li>
+											<li><a class="bg-twitter fa fa-twitter" href="http://www.twitter.com/"></a></li>
+											<li><a class="bg-google-plus fa fa-google-plus" href="http://www.google.com/"></a></li>
+										</ul>	
 									</div>
-								</div>
-								<div class="checkbox-group">
-									<input type="checkbox" id="checkBox2">
-									<label for="checkBox2">
-									<span class="check"></span>
-									<span class="box"></span>
-									Remember me
-									</label>
-								</div>
-								<button type="button" class="btn btn-full">SIGN IN</button>
-								<button type="button" class="btn btn-full">CREATE AN ACCOUNT</button>
-								<div class="text-center"></div>
-								<div class="social-icon-fill">
-									<div>Or sign in with social</div>
-									<ul>
-										<li><a class="icon bg-facebook fa fa-facebook" href="http://www.facebook.com/"></a></li>
-										<li><a class="bg-twitter fa fa-twitter" href="http://www.twitter.com/"></a></li>
-										<li><a class="bg-google-plus fa fa-google-plus" href="http://www.google.com/"></a></li>
-									</ul>
-								</div>
-								<ul class="link-functional">
-									<li><a href="#">Forgot your username?</a></li>
-									<li><a href="#">Forgot your password?</a></li>
-								</ul>
-							</div>
+									<ul class="link-functional">
+										<li><a href="#">Forgot your username?</a></li>
+										<li><a href="#">Forgot your password?</a></li>
+									</ul>	
+							</div>		
 							<!--/modal-add-login-->
-						</div>
-					</form>
-				</div>
+						</div>	
+					</form>		
+				</div>		
 			</div>
 		</div>
-		<!-- /modalLoginForm-->
-		
+		<!-- /modalLoginForm-->		
 <!-- END MODAL -->
-  
+	</div> <!-- end vue -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
   <script src="assets/js/jquery/jquery-2.1.4.min.js"></script>
   <script src="assets/js/bootstrap/bootstrap.min.js"></script>
@@ -793,39 +766,6 @@
   <script src="assets/js/panelmenu/panelmenu.js"></script>
   <script src="assets/js/quick-view.js"></script>
 	<script src="assets/js/main.js"></script>
-	<script>
-		window.onload=function(){
-      
-		}
-		
-		new Vue({
-			el   : '#app',
-			data : {
-				message : 'You loaded this page on ',
-				items : [],
-				carts : [],
-				verified: false
-			},
-			created (){
-				axios.get('http://localhost:3000/api/items')
-				.then((response)=>{
-					// console.log(...response.data)
-					this.items.push(...response.data)
-				})
-				.catch(function(err){
-					console.error(err)
-				})
-			},
-			methods : {
-				addToCart: function(add){
-					// console.log('>>', add.price)
-					add.amount += 1
-					this.carts.push([add.price, add.item_name])
-					console.log(this.carts)
-        }
-			}
-		})
-	</script>
+	<script src="assets/js/vue/crud.js"></script>
 </body>
-
 </html>
