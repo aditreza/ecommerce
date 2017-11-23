@@ -2,14 +2,16 @@ const ObjectId = require('mongodb').ObjectId
 const Transactions = require('../models/transactionModel')
 
 const createTransaction = function(req,res){
+  let history = JSON.stringify(req.body.params.logHistory)
   let newTransaction = Transactions({
-    product : req.body.productId,
-    total : req.body.total,
-    logHistory : req.body.logHistory
+    product : req.body.params.productId,
+    total : req.body.params.total,
+    logHistory : history
   })
-  newTransaction.save().then(function(){
-    res.status(201).send('[+] 1 Transaction Created')
+  newTransaction.save().then(function(data){
+    res.status(201).send({data: data, msg:'[+] 1 Transaction Created'})
   }).catch(function(err){
+    console.log(err)
     res.status(500).send(err)
   })
 }

@@ -11,9 +11,7 @@ const transactionSchema = new Schema({
     default : new Date
   },
   total : Number,
-  logHistory : [{
-    type : String
-  }]
+  logHistory : String
 })
 
 const transactionModel = mongoose.model('Transaction', transactionSchema)

@@ -8,7 +8,8 @@ new Vue({
     trans: [],
     total_price : 0,
     id_pruduct_trans : [],
-    logHistory : []
+    logHistory : [],
+    toinvoice : ''
   },
   created (){
     axios.get('http://localhost:3000/api/items')
@@ -20,6 +21,9 @@ new Vue({
     })
   },
   methods : {
+    invoice(){
+      // console.log('INVOICE',this.toinvoice)
+    },
     addToCart: function(add){
       console.log('=====',this.items)
       if(this.trans == 0){
@@ -61,20 +65,29 @@ new Vue({
     
     toTransaction(){
       this.trans.map(tran=>{
-        console.log('|||',tran.brand)
-        this.logHistory.push(tran._id,tran.item_name,tran.qty,tran.brand,tran.category)
+        console.log('|||',tran.qty)
+        this.logHistory.push({
+          id : tran._id,
+          brand : tran.brand,
+          category : tran.category,
+          item_name : tran.item_name,
+          qty : tran.qty,
+          price : tran.price
+        })
         this.id_pruduct_trans.push(tran._id)
       })
-      console.log('>',this.id_pruduct_trans)
+      console.log('>',this.logHistory)
         axios.post('http://localhost:3000/api/transactions',{
-          productId : this.id_pruduct_trans,
-          total : this.total_price,
-          logHistory : this.logHistory
+          params : {
+            productId : this.id_pruduct_trans,
+            total : this.total_price,
+            logHistory : this.logHistory
+          }
         })
-        .then(function(response){
-          console.log(response)
+        .then((response)=>{
+          this.toinvoice = response.data.data._id
         })
-        .catch(function(err){
+        .catch((err)=>{
           console.error(err)
         })
     }
