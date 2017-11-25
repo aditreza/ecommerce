@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 
 //db connection
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/ecommerceDb').then(function(){
+mongoose.connect('mongodb://bukabukaan:bukabukaan12#@clusterbukabukaan-shard-00-00-oefpr.mongodb.net:27017,clusterbukabukaan-shard-00-01-oefpr.mongodb.net:27017,clusterbukabukaan-shard-00-02-oefpr.mongodb.net:27017/ecommerceDb?ssl=true&replicaSet=ClusterBukabukaan-shard-0&authSource=admin').then(function(){
   console.log('[+] database is listen')
 }).catch(function(err){
   if(err){
